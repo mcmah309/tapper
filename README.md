@@ -20,12 +20,8 @@ Example:
 ```dart
 
 int number = 10;
-number = number.tap
-(
-(n) => print("The number is $n")
-);
+number = number.tap((n) => ++n ).tap((n) => print("The number is ${n}"));
 // Prints: The number is 10
-// number remains 10
 ```
 
 ## Pipe
@@ -35,10 +31,8 @@ The Pipe extension lets you transform an object using a provided function and re
 Example:
 
 ```dart
-
-String greeting = "Hello";
-String excitedGreeting = greeting.pipe((g) => g.toUpperCase() + "!!!");
-// excitedGreeting is now "HELLO!!!"
+number.pipe((n) => ++n ).pipe((n) { print("The number is ${n}"); return n;});
+// Prints: The number is 11
 ```
 
 ## Conv

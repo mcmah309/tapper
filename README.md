@@ -20,7 +20,8 @@ Example:
 ```dart
 
 int number = 10;
-number = number.tap((n) => ++n ).tap((n) => print("The number is ${n}"));
+number = number.tap((n) => ++n )
+    .tap((n) => print("The number is ${n}"));
 // Prints: The number is 10
 ```
 
@@ -31,7 +32,12 @@ The Pipe extension lets you transform an object using a provided function and re
 Example:
 
 ```dart
-number.pipe((n) => ++n ).pipe((n) { print("The number is ${n}"); return n;});
+int number = 10;
+number = number.pipe((n) => ++n )
+    .pipe((n) { 
+      print("The number is ${n}"); 
+      return n;
+    });
 // Prints: The number is 11
 ```
 
@@ -45,10 +51,10 @@ Example:
 ```dart
 
 String numericString = "123";
-int number = numericString.convInt(); // convInt exists for this type
+int? number = numericString.convInt(); // convInt exists for this type
 // number is now 123
 
-dynamic nonNumericString = "abc";
+String nonNumericString = "abc";
 Result<int, ConvException> result = nonNumericString.tryConv<int>();
 // conversion is not possible and handled with Result
 ```
@@ -90,4 +96,4 @@ There also exists `tryConv` for dynamic inputs and concrete output.
 | `String`  | `BigInt?` | `convBigInt()` |
 | `String`  | `bool`    | `convBool()`   |
 
-[tap]:(https://crates.io/crates/tap)
+[tap]: https://crates.io/crates/tap

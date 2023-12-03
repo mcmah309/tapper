@@ -1,3 +1,5 @@
-int calculate() {
-  return 6 * 7;
-}
+library tapper;
+
+export 'src/conv.dart';
+export 'src/pipe.dart';
+export 'src/tap.dart';

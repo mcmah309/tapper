@@ -1,8 +1,8 @@
 import 'package:rust_core/core.dart';
 
 extension Conv<T extends Object> on T {
-    Result<U,ConversionException> tryConv<U extends Object>(){
-      T y = this;
+  Result<U, ConvException> tryConv<U extends Object>() {
+    T y = this;
       U? to;
       switch(y){
         case int():
@@ -103,8 +103,8 @@ extension Conv<T extends Object> on T {
           break;
         }
       if(to == null) {
-        return Err(ConversionException(T, U));
-      }
+      return Err(ConvException(T, U));
+    }
       return Ok(to);
     }
 }
@@ -246,11 +246,11 @@ extension ConvString on String {
 
 //************************************************************************//
 
-class ConversionException implements Exception {
+class ConvException implements Exception {
   final Type from;
   final Type to;
 
-  ConversionException(this.from,this.to);
+  ConvException(this.from, this.to);
 
   @override
   String toString(){

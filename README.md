@@ -3,7 +3,7 @@
 [![Pub Version](https://img.shields.io/pub/v/tapper.svg)](https://pub.dev/packages/tapper)
 [![Dart Package Docs](https://img.shields.io/badge/documentation-pub.dev-blue.svg)](https://pub.dev/documentation/tapper/latest/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://github.com/mcmah309/anyhow/actions/workflows/dart.yml/badge.svg)](https://github.com/mcmah309/tapper/actions)
+[![Build Status](https://github.com/mcmah309/tapper/actions/workflows/dart.yml/badge.svg)](https://github.com/mcmah309/tapper/actions)
 
 Provides extension methods on all types to allow temporary, inspection/mutation (tap),
 transformation (pipe), and safe type conversion without casting (conv).

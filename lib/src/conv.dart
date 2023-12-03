@@ -26,14 +26,14 @@ extension Conv<T extends Object> on T {
             case int:
               to = y.convInt()as U?;
             case double:
-              to = y.convDouble()as U?;
-            case num:
+            to = y as U?;
+          case num:
               to = y.convNum()as U?;
             case bool:
               to = y.convBool()as U?;
             case String:
-              to = y as U?;
-            case BigInt:
+            to = y.toString() as U?;
+          case BigInt:
               to = y.convBigInt()as U?;
           }
           break;
@@ -44,8 +44,8 @@ extension Conv<T extends Object> on T {
         //     case double:
         //       to = y.convDouble()as U?;
         //     case num:
-        //       to = yas U?;
-        //     case bool:
+      //       to = y as U?;
+      //     case bool:
         //       to = y.convBool()as U?;
         //     case String:
         //       to = y.convString()as U?;

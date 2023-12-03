@@ -2,6 +2,55 @@ import 'package:tapper/src/conv.dart';
 import 'package:test/test.dart';
 
 void main(){
+  group("tryConv", () {
+    test('Int conversion to various types', () {
+      expect(5.tryConv<int>().isOk(), true);
+      expect(5.tryConv<double>().isOk(), true);
+      expect(5.tryConv<num>().isOk(), true);
+      expect(5.tryConv<bool>().isOk(), true);
+      expect(5.tryConv<String>().isOk(), true);
+      expect(5.tryConv<BigInt>().isOk(), true);
+    });
+
+    test('Double conversion to various types', () {
+      expect(5.0.tryConv<int>().isOk(), true);
+      expect(5.0.tryConv<double>().isOk(), true);
+      expect(5.0.tryConv<num>().isOk(), true);
+      expect(5.0.tryConv<bool>().isOk(), true);
+      expect(5.0.tryConv<String>().isOk(), true);
+      expect(5.0.tryConv<BigInt>().isOk(), true);
+    });
+
+    test('Bool conversion to various types', () {
+      expect(true.tryConv<int>().isOk(), true);
+      expect(true.tryConv<double>().isOk(), true);
+      expect(true.tryConv<num>().isOk(), true);
+      expect(true.tryConv<bool>().isOk(), true);
+      expect(true.tryConv<String>().isOk(), true);
+      expect(true.tryConv<BigInt>().isOk(), true);
+    });
+
+    test('String conversion to various types', () {
+      expect('123'.tryConv<int>().isOk(), true);
+      expect('123.45'.tryConv<double>().isOk(), true);
+      expect('123'.tryConv<num>().isOk(), true);
+      expect('true'.tryConv<bool>().isOk(), true);
+      expect('string'.tryConv<String>().isOk(), true);
+      expect('1234567890'.tryConv<BigInt>().isOk(), true);
+    });
+
+    test('BigInt conversion to various types', () {
+      expect(BigInt.from(123).tryConv<int>().isOk(), true);
+      expect(BigInt.from(123).tryConv<double>().isOk(), true);
+      expect(BigInt.from(123).tryConv<num>().isOk(), true);
+      expect(BigInt.from(123).tryConv<bool>().isOk(), true);
+      expect(BigInt.from(123).tryConv<String>().isOk(), true);
+      expect(BigInt.from(123).tryConv<BigInt>().isOk(), true);
+    });
+  });
+
+  //************************************************************************//
+
   group("int conv",(){
     test('convDouble returns a double representation of an integer', () {
       expect(5.convDouble(), 5.0);

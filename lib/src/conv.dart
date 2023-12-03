@@ -37,22 +37,7 @@ extension Conv<T extends Object> on T {
             to = from.convBigInt() as U?;
         }
         break;
-      // case num():
-      //   switch (U) {
-      //     case int:
-      //       to = y.convInt()as U?;
-      //     case double:
-      //       to = y.convDouble()as U?;
-      //     case num:
-      //       to = y as U?;
-      //     case bool:
-      //       to = y.convBool()as U?;
-      //     case String:
-      //       to = y.convString()as U?;
-      //     case BigInt:
-      //       to = y.convBigInt()as U?;
-      //   }
-      //   break;
+      // case num: //already handled by int and double
       case bool():
         switch (U) {
           case int:

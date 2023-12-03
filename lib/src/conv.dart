@@ -3,132 +3,132 @@ import 'package:rust_core/core.dart';
 extension Conv<T extends Object> on T {
   Result<U, ConvException> tryConv<U extends Object>() {
     T y = this;
-      U? to;
-      switch(y){
-        case int():
-          switch(U){
-            case int:
-              to = y as U?;
-            case double:
-              to = y.convDouble() as U?;
-            case num:
-              to = y.convNum()as U?;
-            case bool:
-              to = y.convBool()as U?;
-            case String:
-              to = y.convString()as U?;
-            case BigInt:
-              to = y.convBigInt()as U?;
-          }
-          break;
-        case double():
-          switch (U) {
-            case int:
-              to = y.convInt()as U?;
-            case double:
+    U? to;
+    switch (y) {
+      case int():
+        switch (U) {
+          case int:
+            to = y as U?;
+          case double:
+            to = y.convDouble() as U?;
+          case num:
+            to = y.convNum() as U?;
+          case bool:
+            to = y.convBool() as U?;
+          case String:
+            to = y.convString() as U?;
+          case BigInt:
+            to = y.convBigInt() as U?;
+        }
+        break;
+      case double():
+        switch (U) {
+          case int:
+            to = y.convInt() as U?;
+          case double:
             to = y as U?;
           case num:
-              to = y.convNum()as U?;
-            case bool:
-              to = y.convBool()as U?;
-            case String:
+            to = y.convNum() as U?;
+          case bool:
+            to = y.convBool() as U?;
+          case String:
             to = y.toString() as U?;
           case BigInt:
-              to = y.convBigInt()as U?;
-          }
-          break;
-        // case num():
-        //   switch (U) {
-        //     case int:
-        //       to = y.convInt()as U?;
-        //     case double:
-        //       to = y.convDouble()as U?;
-        //     case num:
+            to = y.convBigInt() as U?;
+        }
+        break;
+      // case num():
+      //   switch (U) {
+      //     case int:
+      //       to = y.convInt()as U?;
+      //     case double:
+      //       to = y.convDouble()as U?;
+      //     case num:
       //       to = y as U?;
       //     case bool:
-        //       to = y.convBool()as U?;
-        //     case String:
-        //       to = y.convString()as U?;
-        //     case BigInt:
-        //       to = y.convBigInt()as U?;
-        //   }
-        //   break;
-        case bool():
-          switch (U) {
-            case int:
-              to = y.convInt()as U?;
-            case double:
-              to = y.convDouble()as U?;
-            case num:
-              to = y.convNum()as U?;
-            case bool:
-              to = y as U?;
-            case String:
-              to = y.convString()as U?;
-            case BigInt:
-              to = y.convBigInt()as U?;
-          }
-          break;
-        case String():
-          switch (U) {
-            case int:
-              to = y.convInt()as U?;
-            case double:
-              to = y.convDouble()as U?;
-            case num:
-              to = y.convNum()as U?;
-            case bool:
-              to = y.convBool()as U?;
-            case String:
-              to = y as U?;
-            case BigInt:
-              to = y.convBigInt()as U?;
-          }
-          break;
-        case BigInt():
-          switch (U) {
-            case int:
-              to = y.convInt()as U?;
-            case double:
-              to = y.convDouble()as U?;
-            case num:
-              to = y.convNum()as U?;
-            case bool:
-              to = y.convBool()as U?;
-            case String:
-              to = y.convString()as U?;
-            case BigInt:
-              to = y as U?;
-          }
-          break;
+      //       to = y.convBool()as U?;
+      //     case String:
+      //       to = y.convString()as U?;
+      //     case BigInt:
+      //       to = y.convBigInt()as U?;
+      //   }
+      //   break;
+      case bool():
+        switch (U) {
+          case int:
+            to = y.convInt() as U?;
+          case double:
+            to = y.convDouble() as U?;
+          case num:
+            to = y.convNum() as U?;
+          case bool:
+            to = y as U?;
+          case String:
+            to = y.convString() as U?;
+          case BigInt:
+            to = y.convBigInt() as U?;
         }
-      if(to == null) {
+        break;
+      case String():
+        switch (U) {
+          case int:
+            to = y.convInt() as U?;
+          case double:
+            to = y.convDouble() as U?;
+          case num:
+            to = y.convNum() as U?;
+          case bool:
+            to = y.convBool() as U?;
+          case String:
+            to = y as U?;
+          case BigInt:
+            to = y.convBigInt() as U?;
+        }
+        break;
+      case BigInt():
+        switch (U) {
+          case int:
+            to = y.convInt() as U?;
+          case double:
+            to = y.convDouble() as U?;
+          case num:
+            to = y.convNum() as U?;
+          case bool:
+            to = y.convBool() as U?;
+          case String:
+            to = y.convString() as U?;
+          case BigInt:
+            to = y as U?;
+        }
+        break;
+    }
+    if (to == null) {
       return Err(ConvException(T, U));
     }
-      return Ok(to);
-    }
+    return Ok(to);
+  }
 }
 
 //************************************************************************//
 
 extension ConvInt on int {
-  double convDouble(){
+  double convDouble() {
     return toDouble();
   }
 
-  num convNum(){
+  num convNum() {
     return this;
   }
 
-  BigInt convBigInt(){
+  BigInt convBigInt() {
     return BigInt.from(this);
   }
 
-  String convString(){
+  String convString() {
     return toString();
   }
 
-  bool convBool(){
+  bool convBool() {
     return this == 0 ? false : true;
   }
 }
@@ -243,7 +243,6 @@ extension ConvString on String {
   }
 }
 
-
 //************************************************************************//
 
 class ConvException implements Exception {
@@ -253,7 +252,7 @@ class ConvException implements Exception {
   ConvException(this.from, this.to);
 
   @override
-  String toString(){
+  String toString() {
     return "ConversionException: Failed to convert from type '$from' to '$to'.";
   }
 }

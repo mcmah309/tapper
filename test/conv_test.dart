@@ -1,7 +1,7 @@
 import 'package:tapper/src/conv.dart';
 import 'package:test/test.dart';
 
-void main(){
+void main() {
   group("tryConv", () {
     test('Int conversion to various types', () {
       expect(5.tryConv<int>().isOk(), true);
@@ -51,7 +51,7 @@ void main(){
 
   //************************************************************************//
 
-  group("int conv",(){
+  group("int conv", () {
     test('convDouble returns a double representation of an integer', () {
       expect(5.convDouble(), 5.0);
       expect((-3).convDouble(), -3.0);
@@ -79,7 +79,7 @@ void main(){
     });
   });
 
-  group("double conv",(){
+  group("double conv", () {
     test('convInt returns an int representation of a double', () {
       expect(5.0.convInt(), 5);
       expect((-3.5).convInt(), -3);
@@ -111,7 +111,7 @@ void main(){
     });
   });
 
-  group("num",(){
+  group("num", () {
     test('convInt returns an int representation of a num', () {
       expect(5.0.convInt(), 5);
       expect((-3.5).convInt(), -3);
@@ -143,7 +143,7 @@ void main(){
     });
   });
 
-  group("BigInt conv",(){
+  group("BigInt conv", () {
     test('convInt returns an int representation of a BigInt', () {
       expect(BigInt.from(5).convInt(), 5);
       expect(BigInt.from(-3).convInt(), -3);
@@ -168,14 +168,15 @@ void main(){
       expect(BigInt.zero.convString(), '0');
     });
 
-    test('convBool returns false for BigInt.zero and true for any other BigInt', () {
+    test('convBool returns false for BigInt.zero and true for any other BigInt',
+        () {
       expect(BigInt.from(1).convBool(), true);
       expect(BigInt.from(-1).convBool(), true);
       expect(BigInt.zero.convBool(), false);
     });
   });
 
-  group("bool conv",(){
+  group("bool conv", () {
     test('convInt returns 1 for true and 0 for false', () {
       expect(true.convInt(), 1);
       expect(false.convInt(), 0);
@@ -191,7 +192,8 @@ void main(){
       expect(false.convNum(), 0);
     });
 
-    test('convBigInt returns BigInt.one for true and BigInt.zero for false', () {
+    test('convBigInt returns BigInt.one for true and BigInt.zero for false',
+        () {
       expect(true.convBigInt(), BigInt.one);
       expect(false.convBigInt(), BigInt.zero);
     });
@@ -202,7 +204,7 @@ void main(){
     });
   });
 
-  group("String conv",(){
+  group("String conv", () {
     test('convInt returns int for valid string and null for invalid', () {
       expect('123'.convInt(), 123);
       expect('-456'.convInt(), -456);
@@ -222,8 +224,10 @@ void main(){
     });
 
     test('convBigInt returns BigInt for valid string and null for invalid', () {
-      expect('12345678901234567890'.convBigInt(), BigInt.parse('12345678901234567890'));
-      expect('-12345678901234567890'.convBigInt(), BigInt.parse('-12345678901234567890'));
+      expect('12345678901234567890'.convBigInt(),
+          BigInt.parse('12345678901234567890'));
+      expect('-12345678901234567890'.convBigInt(),
+          BigInt.parse('-12345678901234567890'));
       expect('abc'.convBigInt(), null);
     });
 

@@ -1,7 +1,7 @@
 name: tapper
 description: Provides extension methods on all types to allow temporary, inspection/mutation (tapping) and
   transformation (piping)
-version: 0.1.1
+version: 0.1.2
 repository: https://github.com/mcmah309/tapper
 
 environment:
@@ -10,7 +10,7 @@ environment:
 # Add regular dependencies here.
 dependencies:
   # path: ^1.8.0
-  rust_core: ^0.2.1
+  rust_core: ^0.3.0
 
 dev_dependencies:
   lints: ^2.1.0

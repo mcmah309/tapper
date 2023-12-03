@@ -1,7 +1,7 @@
 name: tapper
 description: Provides extension methods on all types to allow temporary, inspection/mutation (tapping) and
   transformation (piping)
-version: 0.1.2
+version: 0.1.3
 repository: https://github.com/mcmah309/tapper
 
 environment:

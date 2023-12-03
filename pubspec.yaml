@@ -1,0 +1,16 @@
+name: tapper
+description: Provides extension methods on all types to allow temporary, inspection/mutation (tapping) and
+  transformation (piping)
+version: 0.0.1
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: ^3.2.0
+
+# Add regular dependencies here.
+dependencies:
+  # path: ^1.8.0
+
+dev_dependencies:
+  lints: ^2.1.0
+  test: ^1.24.0

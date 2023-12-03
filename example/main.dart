@@ -17,6 +17,6 @@ void main() {
   // number is now 123
 
   String nonNumericString = "abc";
-  Result<int, ConvException> result = nonNumericString.tryConv<int>();
+  Result<int, ConvException> _ = nonNumericString.tryConv<int>();
   // conversion is not possible and handled with Result
 }

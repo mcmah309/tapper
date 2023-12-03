@@ -2,39 +2,39 @@ import 'package:rust_core/core.dart';
 
 extension Conv<T extends Object> on T {
   Result<U, ConvException> tryConv<U extends Object>() {
-    T y = this;
+    T from = this;
     U? to;
-    switch (y) {
+    switch (from) {
       case int():
         switch (U) {
           case int:
-            to = y as U?;
+            to = from as U?;
           case double:
-            to = y.convDouble() as U?;
+            to = from.convDouble() as U?;
           case num:
-            to = y.convNum() as U?;
+            to = from.convNum() as U?;
           case bool:
-            to = y.convBool() as U?;
+            to = from.convBool() as U?;
           case String:
-            to = y.convString() as U?;
+            to = from.convString() as U?;
           case BigInt:
-            to = y.convBigInt() as U?;
+            to = from.convBigInt() as U?;
         }
         break;
       case double():
         switch (U) {
           case int:
-            to = y.convInt() as U?;
+            to = from.convInt() as U?;
           case double:
-            to = y as U?;
+            to = from as U?;
           case num:
-            to = y.convNum() as U?;
+            to = from.convNum() as U?;
           case bool:
-            to = y.convBool() as U?;
+            to = from.convBool() as U?;
           case String:
-            to = y.toString() as U?;
+            to = from.toString() as U?;
           case BigInt:
-            to = y.convBigInt() as U?;
+            to = from.convBigInt() as U?;
         }
         break;
       // case num():
@@ -56,49 +56,49 @@ extension Conv<T extends Object> on T {
       case bool():
         switch (U) {
           case int:
-            to = y.convInt() as U?;
+            to = from.convInt() as U?;
           case double:
-            to = y.convDouble() as U?;
+            to = from.convDouble() as U?;
           case num:
-            to = y.convNum() as U?;
+            to = from.convNum() as U?;
           case bool:
-            to = y as U?;
+            to = from as U?;
           case String:
-            to = y.convString() as U?;
+            to = from.convString() as U?;
           case BigInt:
-            to = y.convBigInt() as U?;
+            to = from.convBigInt() as U?;
         }
         break;
       case String():
         switch (U) {
           case int:
-            to = y.convInt() as U?;
+            to = from.convInt() as U?;
           case double:
-            to = y.convDouble() as U?;
+            to = from.convDouble() as U?;
           case num:
-            to = y.convNum() as U?;
+            to = from.convNum() as U?;
           case bool:
-            to = y.convBool() as U?;
+            to = from.convBool() as U?;
           case String:
-            to = y as U?;
+            to = from as U?;
           case BigInt:
-            to = y.convBigInt() as U?;
+            to = from.convBigInt() as U?;
         }
         break;
       case BigInt():
         switch (U) {
           case int:
-            to = y.convInt() as U?;
+            to = from.convInt() as U?;
           case double:
-            to = y.convDouble() as U?;
+            to = from.convDouble() as U?;
           case num:
-            to = y.convNum() as U?;
+            to = from.convNum() as U?;
           case bool:
-            to = y.convBool() as U?;
+            to = from.convBool() as U?;
           case String:
-            to = y.convString() as U?;
+            to = from.convString() as U?;
           case BigInt:
-            to = y as U?;
+            to = from as U?;
         }
         break;
     }

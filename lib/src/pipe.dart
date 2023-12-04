@@ -1,5 +1,5 @@
 extension Pipe<T> on T {
-  T pipe(T Function(T) fn) {
+  R pipe<R>(R Function(T) fn) {
     return fn(this);
   }
 }

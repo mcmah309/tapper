@@ -1,6 +1,7 @@
 import 'package:rust_core/core.dart';
 
 extension Conv<T extends Object> on T {
+  /// Attempts to convert this into [U].
   Result<U, ConvException> tryConv<U extends Object>() {
     T from = this;
     U? to;
@@ -230,6 +231,7 @@ extension ConvString on String {
 
 //************************************************************************//
 
+/// Exception from a failed conversion
 class ConvException implements Exception {
   final Type from;
   final Type to;

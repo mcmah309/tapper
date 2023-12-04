@@ -16,7 +16,7 @@ void main() {
   number = numericString.convInt(); // convInt exists for this type
   // number is now 123
 
-  String nonNumericString = "abc";
+  Object nonNumericString = "abc";
   Result<int, ConvException> _ = nonNumericString.tryConv<int>();
   // conversion is not possible and handled with Result
 }

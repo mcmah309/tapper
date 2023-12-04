@@ -1,3 +1,8 @@
+# 0.1.4
+
+- Broaden pipe
+- docs
+
 # 0.1.3
 
 - lint

@@ -213,10 +213,10 @@ packages:
     dependency: "direct main"
     description:
       name: rust_core
-      sha256: "1e1085a2fd3a9b842074fac724616b610a94f9c33fa5adac06537af670b2fdb0"
+      sha256: "1da061a729fa2566c7b991818b14688fc49bbc4342c674f4cb46f3507ce0a051"
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.0"
+    version: "0.3.4"
   shelf:
     dependency: transitive
     description:

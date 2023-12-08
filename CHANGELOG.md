@@ -1,3 +1,7 @@
+# 0.1.6
+
+- Update dependency
+
 # 0.1.5
 
 - Update dependency

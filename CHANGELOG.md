@@ -1,3 +1,7 @@
+# 0.1.5
+
+- Update dependency
+
 # 0.1.4
 
 - Broaden pipe

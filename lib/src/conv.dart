@@ -90,17 +90,17 @@ extension Conv<T extends Object> on T {
       case Iterable<Object?>():
         switch (U) {
           case int:
-            to = _tryConvIterableHelper<U>(from);
+            to = _tryConvFromIterableHelper<U>(from);
           case double:
-            to = _tryConvIterableHelper<U>(from);
+            to = _tryConvFromIterableHelper<U>(from);
           case num:
-            to = _tryConvIterableHelper<U>(from);
+            to = _tryConvFromIterableHelper<U>(from);
           case bool:
-            to = _tryConvIterableHelper<U>(from);
+            to = _tryConvFromIterableHelper<U>(from);
           case String:
-            to = _tryConvIterableHelper<U>(from);
+            to = _tryConvFromIterableHelper<U>(from);
           case BigInt:
-            to = _tryConvIterableHelper<U>(from);
+            to = _tryConvFromIterableHelper<U>(from);
         }
         break;
     }
@@ -111,7 +111,7 @@ extension Conv<T extends Object> on T {
   }
 }
 
-U? _tryConvIterableHelper<U extends Object>(Iterable<Object?> from) {
+U? _tryConvFromIterableHelper<U extends Object>(Iterable<Object?> from) {
   final inner = from.convSingle();
   if(inner == null) {
     return null;
@@ -306,6 +306,16 @@ extension ConvIterable<T> on Iterable<T> {
       first = element;
     }
     return first;
+  }
+
+  /// Converts this into a [List<T>].
+  List<T> convList() {
+    return toList();
+  }
+
+  /// Converts this into a [Set<T>].
+  Set<T> convSet() {
+    return toSet();
   }
 }
 

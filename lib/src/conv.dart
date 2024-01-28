@@ -87,12 +87,40 @@ extension Conv<T extends Object> on T {
             to = from as U?;
         }
         break;
+      case Iterable<Object?>():
+        switch (U) {
+          case int:
+            to = _tryConvIterableHelper<U>(from);
+          case double:
+            to = _tryConvIterableHelper<U>(from);
+          case num:
+            to = _tryConvIterableHelper<U>(from);
+          case bool:
+            to = _tryConvIterableHelper<U>(from);
+          case String:
+            to = _tryConvIterableHelper<U>(from);
+          case BigInt:
+            to = _tryConvIterableHelper<U>(from);
+        }
+        break;
     }
     if (to == null) {
       return Err(ConvException(T, U));
     }
     return Ok(to);
   }
+}
+
+U? _tryConvIterableHelper<U extends Object>(Iterable<Object?> from) {
+  final inner = from.convSingle();
+  if(inner == null) {
+    return null;
+  }
+  final innerConv = inner.tryConv<U>();
+  if(innerConv.isErr()) {
+    return null;
+  }
+  return innerConv.unwrap();
 }
 
 //************************************************************************//
@@ -265,7 +293,7 @@ extension ConvString on String {
   }
 }
 
-extension ConvIterable<T extends Object> on Iterable<T> {
+extension ConvIterable<T> on Iterable<T> {
   /// Converts this into a single [T] is this only contains one element. Otherwise null.
   T? convSingle() {
     T? first;

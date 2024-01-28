@@ -98,132 +98,168 @@ extension Conv<T extends Object> on T {
 //************************************************************************//
 
 extension ConvInt on int {
+
+  /// Converts this into a [double].
   double convDouble() {
     return toDouble();
   }
 
+  /// Converts this into a [num].
   num convNum() {
     return this;
   }
 
+  /// Converts this into a [BigInt].
   BigInt convBigInt() {
     return BigInt.from(this);
   }
 
+  /// Converts this into a [String].
   String convString() {
     return toString();
   }
 
+  /// Converts this into a [bool]. Returns false if this is zero, otherwise true.
   bool convBool() {
     return this == 0 ? false : true;
   }
 }
 
 extension ConvDouble on double {
+
+  /// Converts this into an [int].
   int convInt() {
     return toInt();
   }
 
+  /// Converts this into a [num].
   num convNum() {
     return this;
   }
 
+  /// Converts this into a [BigInt].
   BigInt convBigInt() {
     return BigInt.from(this);
   }
 
+  /// Converts this into a [String].
   String convString() {
     return toString();
   }
 
+  /// Converts this into a [bool]. Returns false if this is zero, otherwise true.
   bool convBool() {
     return this == 0.0 ? false : true;
   }
 }
 
 extension ConvNum on num {
+
+  /// Converts this into an [int].
   int convInt() {
     return toInt();
   }
 
+  /// Converts this into a [double].
   double convDouble() {
     return toDouble();
   }
 
+  /// Converts this into a [BigInt].
   BigInt convBigInt() {
     return BigInt.from(this);
   }
 
+  /// Converts this into a [String].
   String convString() {
     return toString();
   }
 
+  /// Converts this into a [bool]. Returns false if this is zero, otherwise true.
   bool convBool() {
     return this == 0 ? false : true;
   }
 }
 
 extension ConvBigInt on BigInt {
+
+  /// Converts this into an [int].
   int convInt() {
     return toInt();
   }
 
+  /// Converts this into a [double].
   double convDouble() {
     return toDouble();
   }
 
+  /// Converts this into a [num].
   num convNum() {
     return toDouble();
   }
 
+  /// Converts this into a [String].
   String convString() {
     return toString();
   }
 
+  /// Converts this into a [bool]. Returns false if this is zero, otherwise true.
   bool convBool() {
     return this == BigInt.zero ? false : true;
   }
 }
 
 extension ConvBool on bool {
+
+  /// Converts this into an [int]. Returns 1 if this is true, otherwise 0.
   int convInt() {
     return this ? 1 : 0;
   }
 
+  /// Converts this into a [double]. Returns 1.0 if this is true, otherwise 0.0.
   double convDouble() {
     return this ? 1.0 : 0.0;
   }
 
+  /// Converts this into a [num]. Returns 1 if this is true, otherwise 0.
   num convNum() {
     return this ? 1 : 0;
   }
 
+  /// Converts this into a [BigInt]. Returns 1 if this is true, otherwise 0.
   BigInt convBigInt() {
     return this ? BigInt.one : BigInt.zero;
   }
 
+  /// Converts this into a [String]. Returns "true" if this is true, otherwise "false".
   String convString() {
     return toString();
   }
 }
 
 extension ConvString on String {
+
+  /// Converts this into an [int]. Returns null if this is not a valid [int].
   int? convInt() {
     return int.tryParse(this);
   }
 
+  /// Converts this into a [double]. Returns null if this is not a valid [double].
   double? convDouble() {
     return double.tryParse(this);
   }
 
+  /// Converts this into a [num]. Returns null if this is not a valid [num].
   num? convNum() {
     return num.tryParse(this);
   }
 
+  /// Converts this into a [BigInt]. Returns null if this is not a valid [BigInt].
   BigInt? convBigInt() {
     return BigInt.tryParse(this);
   }
 
+  /// Converts this into a [bool]. Returns false if this is an empty string, otherwise true.
   bool convBool() {
     return this == "" ? false : true;
   }

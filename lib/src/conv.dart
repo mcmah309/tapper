@@ -229,6 +229,22 @@ extension ConvString on String {
   }
 }
 
+extension ConvIterable<T extends Object> on Iterable<T> {
+  /// Converts this into a single [T] is this only contains one element. Otherwise null.
+  T? convSingle() {
+    T? first;
+    int index = 0;
+    for(T element in this) {
+      if(index > 0) {
+        return null;
+      }
+      index++;
+      first = element;
+    }
+    return first;
+  }
+}
+
 //************************************************************************//
 
 /// Exception from a failed conversion

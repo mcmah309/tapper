@@ -1,51 +1,88 @@
+import 'dart:math';
+
 import 'package:tapper/src/conv.dart';
 import 'package:test/test.dart';
 
 void main() {
   group("tryConv", () {
     test('Int conversion to various types', () {
-      expect(5.tryConv<int>().isOk(), true);
-      expect(5.tryConv<double>().isOk(), true);
-      expect(5.tryConv<num>().isOk(), true);
-      expect(5.tryConv<bool>().isOk(), true);
-      expect(5.tryConv<String>().isOk(), true);
-      expect(5.tryConv<BigInt>().isOk(), true);
+      expect(5.tryConv<int>().unwrap(), 5);
+      expect(5.tryConv<double>().unwrap(), 5.0);
+      expect(5.tryConv<num>().unwrap(), 5);
+      expect(5.tryConv<bool>().unwrap(), isTrue);
+      expect(5.tryConv<String>().unwrap(), '5');
+      expect(5.tryConv<BigInt>().unwrap(), BigInt.from(5));
     });
 
     test('Double conversion to various types', () {
-      expect(5.0.tryConv<int>().isOk(), true);
-      expect(5.0.tryConv<double>().isOk(), true);
-      expect(5.0.tryConv<num>().isOk(), true);
-      expect(5.0.tryConv<bool>().isOk(), true);
-      expect(5.0.tryConv<String>().isOk(), true);
-      expect(5.0.tryConv<BigInt>().isOk(), true);
+      expect(5.0.tryConv<int>().unwrap(), 5);
+      expect(5.0.tryConv<double>().unwrap(), 5.0);
+      expect(5.0.tryConv<num>().unwrap(), 5.0);
+      expect(5.0.tryConv<bool>().unwrap(), isTrue);
+      expect(5.0.tryConv<String>().unwrap(), '5.0');
+      expect(5.0.tryConv<BigInt>().unwrap(), BigInt.from(5));
     });
 
     test('Bool conversion to various types', () {
-      expect(true.tryConv<int>().isOk(), true);
-      expect(true.tryConv<double>().isOk(), true);
-      expect(true.tryConv<num>().isOk(), true);
-      expect(true.tryConv<bool>().isOk(), true);
-      expect(true.tryConv<String>().isOk(), true);
-      expect(true.tryConv<BigInt>().isOk(), true);
+      expect(true.tryConv<int>().unwrap(), 1);
+      expect(true.tryConv<double>().unwrap(), 1.0);
+      expect(true.tryConv<num>().unwrap(), 1);
+      expect(true.tryConv<bool>().unwrap(), true);
+      expect(true.tryConv<String>().unwrap(), 'true');
+      expect(true.tryConv<BigInt>().unwrap(), BigInt.from(1));
+
+      expect(false.tryConv<int>().unwrap(), 0);
+      expect(false.tryConv<double>().unwrap(), 0.0);
+      expect(false.tryConv<num>().unwrap(), 0);
+      expect(false.tryConv<bool>().unwrap(), false);
+      expect(false.tryConv<String>().unwrap(), 'false');
+      expect(false.tryConv<BigInt>().unwrap(), BigInt.zero);
     });
 
     test('String conversion to various types', () {
-      expect('123'.tryConv<int>().isOk(), true);
-      expect('123.45'.tryConv<double>().isOk(), true);
-      expect('123'.tryConv<num>().isOk(), true);
-      expect('true'.tryConv<bool>().isOk(), true);
-      expect('string'.tryConv<String>().isOk(), true);
-      expect('1234567890'.tryConv<BigInt>().isOk(), true);
+      expect('123'.tryConv<int>().unwrap(), 123);
+      expect('123.45'.tryConv<double>().unwrap(), 123.45);
+      expect('123'.tryConv<num>().unwrap(), 123);
+      expect('true'.tryConv<bool>().unwrap(), true);
+      expect('string'.tryConv<String>().unwrap(), 'string');
+      expect('1234567890'.tryConv<BigInt>().unwrap(), BigInt.parse('1234567890'));
     });
 
     test('BigInt conversion to various types', () {
-      expect(BigInt.from(123).tryConv<int>().isOk(), true);
-      expect(BigInt.from(123).tryConv<double>().isOk(), true);
-      expect(BigInt.from(123).tryConv<num>().isOk(), true);
-      expect(BigInt.from(123).tryConv<bool>().isOk(), true);
-      expect(BigInt.from(123).tryConv<String>().isOk(), true);
-      expect(BigInt.from(123).tryConv<BigInt>().isOk(), true);
+      expect(BigInt.from(123).tryConv<int>().unwrap(), 123);
+      expect(BigInt.from(123).tryConv<double>().unwrap(), 123.0);
+      expect(BigInt.from(123).tryConv<num>().unwrap(), 123);
+      expect(BigInt.from(123).tryConv<bool>().unwrap(), isTrue);
+      expect(BigInt.from(123).tryConv<String>().unwrap(), '123');
+      expect(BigInt.from(123).tryConv<BigInt>().unwrap(), BigInt.from(123));
+    });
+
+    test('Iterable to single', () {
+      expect([1].tryConv<int>().unwrap(), 1);
+      expect([1].tryConv<double>().unwrap(), 1.0);
+      expect([1].tryConv<num>().unwrap(), 1);
+      expect([1].tryConv<bool>().unwrap(), isTrue);
+      expect([1].tryConv<String>().unwrap(), '1');
+      expect([1].tryConv<BigInt>().unwrap(), BigInt.from(1));
+
+      expect([1, 2].tryConv<int>().isOk(), false);
+      expect([1, 2].tryConv<double>().isOk(), false);
+      expect([1, 2].tryConv<num>().isOk(), false);
+      expect([1, 2].tryConv<bool>().isOk(), false);
+      expect([1, 2].tryConv<String>().isOk(), false);
+      expect([1, 2].tryConv<BigInt>().isOk(), false);
+
+      Iterable<int?> nullIterable = [1];
+      expect(nullIterable.tryConv<int>().unwrap(), 1);
+      expect(nullIterable.tryConv<double>().unwrap(), 1.0);
+
+      nullIterable = [null];
+      expect(nullIterable.tryConv<int>().isOk(), false);
+      expect(nullIterable.tryConv<double>().isOk(), false);
+
+      nullIterable = [null, 2];
+      expect(nullIterable.tryConv<int>().isOk(), false);
+      expect(nullIterable.tryConv<double>().isOk(), false);
     });
   });
 
@@ -168,8 +205,7 @@ void main() {
       expect(BigInt.zero.convString(), '0');
     });
 
-    test('convBool returns false for BigInt.zero and true for any other BigInt',
-        () {
+    test('convBool returns false for BigInt.zero and true for any other BigInt', () {
       expect(BigInt.from(1).convBool(), true);
       expect(BigInt.from(-1).convBool(), true);
       expect(BigInt.zero.convBool(), false);
@@ -192,8 +228,7 @@ void main() {
       expect(false.convNum(), 0);
     });
 
-    test('convBigInt returns BigInt.one for true and BigInt.zero for false',
-        () {
+    test('convBigInt returns BigInt.one for true and BigInt.zero for false', () {
       expect(true.convBigInt(), BigInt.one);
       expect(false.convBigInt(), BigInt.zero);
     });
@@ -224,10 +259,8 @@ void main() {
     });
 
     test('convBigInt returns BigInt for valid string and null for invalid', () {
-      expect('12345678901234567890'.convBigInt(),
-          BigInt.parse('12345678901234567890'));
-      expect('-12345678901234567890'.convBigInt(),
-          BigInt.parse('-12345678901234567890'));
+      expect('12345678901234567890'.convBigInt(), BigInt.parse('12345678901234567890'));
+      expect('-12345678901234567890'.convBigInt(), BigInt.parse('-12345678901234567890'));
       expect('abc'.convBigInt(), null);
     });
 
@@ -235,6 +268,14 @@ void main() {
       expect(''.convBool(), false);
       expect('true'.convBool(), true);
       expect('false'.convBool(), true);
+    });
+  });
+
+  group("convSingle", () {
+    test("convSingle returns a single int for Iterable<Int>", () {
+      expect([1].convSingle(), 1);
+      expect([1, 2].convSingle(), null);
+      expect([null].convSingle(), null);
     });
   });
 }

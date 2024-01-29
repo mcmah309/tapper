@@ -21,6 +21,6 @@ void main() {
   // conversion is not possible and handled with Result
 
   List<Set<List<int>>> nestedInt = [{[1]}];
-  Result<String, ConvException> intResult = nestedInt.tryConv<String>();
+  Result<String, ConvException> stringResult = nestedInt.tryConv<String>();
   // result is Ok("1")
 }

@@ -13,7 +13,7 @@ Based on the Rust crate with a similar name [tap].
 ## Tap
 
 The `Tap` extension allows you to perform an operation on an object and then return the original object. It's useful for
-debugging or performing side effects.
+debugging, performing side effects, or logging.
 
 ```dart
 
@@ -26,7 +26,7 @@ number = number
 
 ## Pipe
 
-The Pipe extension lets you transform an object using a provided function and returns the transformed object.
+The Pipe extension lets you transform an object.
 
 ```dart
 int number = 10;
@@ -58,8 +58,8 @@ Result<int, ConvException> numberResult = nonNumericString.tryConv<int>();
 // conversion is not possible and handled with Result
 
 List<Set<List<int>>> nestedInt = [{[1]}];
-Result<int, ConvException> intResult = nestedInt.tryConv<double>();
-// result is Ok(1.0)
+Result<double, ConvException> doubleResult = nestedInt.tryConv<double>();
+// doubleResult is Ok(1.0)
 ```
 
 ### Valid Conversions
@@ -98,7 +98,6 @@ Result<int, ConvException> intResult = nestedInt.tryConv<double>();
 | `String`  | `num?`    | `convNum()`    |
 | `String`  | `BigInt?` | `convBigInt()` |
 | `String`  | `bool`    | `convBool()`   |
-| `Iterable<T>`  | `T?`    | `convSingle()`   |
 
 #### Try Valid Conversions
 Where `T` is any type in the current column.

@@ -1,3 +1,7 @@
+# 0.1.7
+
+- Try Conv for Iterable
+
 # 0.1.6
 
 - Update dependency

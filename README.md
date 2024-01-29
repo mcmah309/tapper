@@ -15,13 +15,12 @@ Based on the Rust crate with a similar name [tap].
 The `Tap` extension allows you to perform an operation on an object and then return the original object. It's useful for
 debugging or performing side effects.
 
-Example:
-
 ```dart
 
 int number = 10;
-number = number.tap((n) => ++n )
-    .tap((n) => print("The number is ${n}"));
+number = number
+          .tap((n) => ++n )
+          .tap((n) => print("The number is ${n}"));
 // Prints: The number is 10
 ```
 
@@ -29,15 +28,14 @@ number = number.tap((n) => ++n )
 
 The Pipe extension lets you transform an object using a provided function and returns the transformed object.
 
-Example:
-
 ```dart
 int number = 10;
-number = number.pipe((n) => ++n )
-    .pipe((n) { 
-      print("The number is ${n}"); 
-      return n;
-    });
+number = number
+          .pipe((n) => ++n )
+          .pipe((n) { 
+            print("The number is ${n}"); 
+            return n;
+          });
 // Prints: The number is 11
 ```
 
@@ -46,22 +44,27 @@ number = number.pipe((n) => ++n )
 The Conv extension is used for type conversion. You can convert an object from one type to another, handling cases where
 the conversion is not possible.
 
-Example:
-
 ```dart
 
 String numericString = "123";
 int? number = numericString.convInt(); // convInt exists for this type
 // number is now 123
+```
 
+Try Conv exists for dynamic inputs and concrete output.
+```dart
 Object nonNumericString = "abc";
-Result<int, ConvException> result = nonNumericString.tryConv<int>();
+Result<int, ConvException> numberResult = nonNumericString.tryConv<int>();
 // conversion is not possible and handled with Result
+
+List<Set<List<int>>> nestedInt = [{[1]}];
+Result<int, ConvException> intResult = nestedInt.tryConv<double>();
+// result is Ok(1.0)
 ```
 
 ### Valid Conversions
 
-There also exists `tryConv` for dynamic inputs and concrete output.
+#### Built-In
 
 | From Type | To Type   | Method Used    |
 |-----------|-----------|----------------|
@@ -95,5 +98,30 @@ There also exists `tryConv` for dynamic inputs and concrete output.
 | `String`  | `num?`    | `convNum()`    |
 | `String`  | `BigInt?` | `convBigInt()` |
 | `String`  | `bool`    | `convBool()`   |
+| `Iterable<T>`  | `T?`    | `convSingle()`   |
+
+#### Try Valid Conversions
+Where `T` is any type in the current column.
+
+| From Types | 
+|------------|
+| `int` |
+| `double` |
+| `num` |
+| `BigInt` |
+| `bool` |
+| `String` |
+| `Iterable<T>` |
+
+| To Types | 
+|------------|
+| `int` |
+| `double` |
+| `num` |
+| `BigInt` |
+| `bool` |
+| `String` |
+
+
 
 [tap]: https://crates.io/crates/tap

@@ -17,6 +17,10 @@ void main() {
   // number is now 123
 
   Object nonNumericString = "abc";
-  Result<int, ConvException> _ = nonNumericString.tryConv<int>();
+  Result<int, ConvException> numberResult = nonNumericString.tryConv<int>();
   // conversion is not possible and handled with Result
+
+  List<Set<List<int>>> nestedInt = [{[1]}];
+  Result<String, ConvException> intResult = nestedInt.tryConv<String>();
+  // result is Ok("1")
 }

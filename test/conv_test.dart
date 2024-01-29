@@ -45,7 +45,8 @@ void main() {
       expect('123'.tryConv<num>().unwrap(), 123);
       expect('true'.tryConv<bool>().unwrap(), true);
       expect('string'.tryConv<String>().unwrap(), 'string');
-      expect('1234567890'.tryConv<BigInt>().unwrap(), BigInt.parse('1234567890'));
+      expect(
+          '1234567890'.tryConv<BigInt>().unwrap(), BigInt.parse('1234567890'));
     });
 
     test('BigInt conversion to various types', () {
@@ -84,7 +85,11 @@ void main() {
       expect(nullIterable.tryConv<int>().isOk(), false);
       expect(nullIterable.tryConv<double>().isOk(), false);
 
-      final nested = [[[1]]];
+      final nested = [
+        [
+          [1]
+        ]
+      ];
       expect(nested.tryConv<int>().unwrap(), 1);
       expect(nested.tryConv<String>().unwrap(), "1");
     });
@@ -209,7 +214,8 @@ void main() {
       expect(BigInt.zero.convString(), '0');
     });
 
-    test('convBool returns false for BigInt.zero and true for any other BigInt', () {
+    test('convBool returns false for BigInt.zero and true for any other BigInt',
+        () {
       expect(BigInt.from(1).convBool(), true);
       expect(BigInt.from(-1).convBool(), true);
       expect(BigInt.zero.convBool(), false);
@@ -232,7 +238,8 @@ void main() {
       expect(false.convNum(), 0);
     });
 
-    test('convBigInt returns BigInt.one for true and BigInt.zero for false', () {
+    test('convBigInt returns BigInt.one for true and BigInt.zero for false',
+        () {
       expect(true.convBigInt(), BigInt.one);
       expect(false.convBigInt(), BigInt.zero);
     });
@@ -263,8 +270,10 @@ void main() {
     });
 
     test('convBigInt returns BigInt for valid string and null for invalid', () {
-      expect('12345678901234567890'.convBigInt(), BigInt.parse('12345678901234567890'));
-      expect('-12345678901234567890'.convBigInt(), BigInt.parse('-12345678901234567890'));
+      expect('12345678901234567890'.convBigInt(),
+          BigInt.parse('12345678901234567890'));
+      expect('-12345678901234567890'.convBigInt(),
+          BigInt.parse('-12345678901234567890'));
       expect('abc'.convBigInt(), null);
     });
 

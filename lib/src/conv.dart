@@ -113,11 +113,11 @@ extension Conv<T extends Object> on T {
 
 U? _tryConvFromIterableHelper<U extends Object>(Iterable<Object?> from) {
   final inner = from.singleOrNull;
-  if(inner == null) {
+  if (inner == null) {
     return null;
   }
   final innerConv = inner.tryConv<U>();
-  if(innerConv.isErr()) {
+  if (innerConv.isErr()) {
     return null;
   }
   return innerConv.unwrap();
@@ -126,7 +126,6 @@ U? _tryConvFromIterableHelper<U extends Object>(Iterable<Object?> from) {
 //************************************************************************//
 
 extension ConvInt on int {
-
   /// Converts this into a [double].
   double convDouble() {
     return toDouble();
@@ -154,7 +153,6 @@ extension ConvInt on int {
 }
 
 extension ConvDouble on double {
-
   /// Converts this into an [int].
   int convInt() {
     return toInt();
@@ -182,7 +180,6 @@ extension ConvDouble on double {
 }
 
 extension ConvNum on num {
-
   /// Converts this into an [int].
   int convInt() {
     return toInt();
@@ -210,7 +207,6 @@ extension ConvNum on num {
 }
 
 extension ConvBigInt on BigInt {
-
   /// Converts this into an [int].
   int convInt() {
     return toInt();
@@ -238,7 +234,6 @@ extension ConvBigInt on BigInt {
 }
 
 extension ConvBool on bool {
-
   /// Converts this into an [int]. Returns 1 if this is true, otherwise 0.
   int convInt() {
     return this ? 1 : 0;
@@ -266,7 +261,6 @@ extension ConvBool on bool {
 }
 
 extension ConvString on String {
-
   /// Converts this into an [int]. Returns null if this is not a valid [int].
   int? convInt() {
     return int.tryParse(this);

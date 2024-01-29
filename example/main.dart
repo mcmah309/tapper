@@ -20,7 +20,11 @@ void main() {
   Result<int, ConvException> numberResult = nonNumericString.tryConv<int>();
   // conversion is not possible and handled with Result
 
-  List<Set<List<int>>> nestedInt = [{[1]}];
+  List<Set<List<int>>> nestedInt = [
+    {
+      [1]
+    }
+  ];
   Result<String, ConvException> stringResult = nestedInt.tryConv<String>();
   // result is Ok("1")
 }

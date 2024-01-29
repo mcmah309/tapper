@@ -83,6 +83,10 @@ void main() {
       nullIterable = [null, 2];
       expect(nullIterable.tryConv<int>().isOk(), false);
       expect(nullIterable.tryConv<double>().isOk(), false);
+
+      final nested = [[[1]]];
+      expect(nested.tryConv<int>().unwrap(), 1);
+      expect(nested.tryConv<String>().unwrap(), "1");
     });
   });
 
@@ -268,14 +272,6 @@ void main() {
       expect(''.convBool(), false);
       expect('true'.convBool(), true);
       expect('false'.convBool(), true);
-    });
-  });
-
-  group("convSingle", () {
-    test("convSingle returns a single int for Iterable<Int>", () {
-      expect([1].convSingle(), 1);
-      expect([1, 2].convSingle(), null);
-      expect([null].convSingle(), null);
     });
   });
 }

@@ -112,7 +112,7 @@ extension Conv<T extends Object> on T {
 }
 
 U? _tryConvFromIterableHelper<U extends Object>(Iterable<Object?> from) {
-  final inner = from.convSingle();
+  final inner = from.singleOrNull;
   if(inner == null) {
     return null;
   }
@@ -290,32 +290,6 @@ extension ConvString on String {
   /// Converts this into a [bool]. Returns false if this is an empty string, otherwise true.
   bool convBool() {
     return this == "" ? false : true;
-  }
-}
-
-extension ConvIterable<T> on Iterable<T> {
-  /// Converts this into a single [T] is this only contains one element. Otherwise null.
-  T? convSingle() {
-    T? first;
-    int index = 0;
-    for(T element in this) {
-      if(index > 0) {
-        return null;
-      }
-      index++;
-      first = element;
-    }
-    return first;
-  }
-
-  /// Converts this into a [List<T>].
-  List<T> convList() {
-    return toList();
-  }
-
-  /// Converts this into a [Set<T>].
-  Set<T> convSet() {
-    return toSet();
   }
 }
 

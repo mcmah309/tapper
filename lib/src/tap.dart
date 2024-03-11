@@ -8,7 +8,6 @@ extension Tap<T> on T {
   }
 }
 
-
 extension FutureTap<T> on Future<T> {
   /// Introspects the current value with the provided function
   Future<T> tap(FutureOr<void> Function(T) fn) async {

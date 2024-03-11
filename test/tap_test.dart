@@ -2,7 +2,8 @@ import 'package:tapper/tapper.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test('Tap extension calls the function with the object and returns it', () async {
+  test('Tap extension calls the function with the object and returns it',
+      () async {
     int number = 5;
     int result = number.tap((n) {
       expect(n, number);
@@ -26,10 +27,11 @@ void main() {
       expect(p, point);
       point = Point(3, 4);
     });
-    expect(point,  Point(3, 4));
+    expect(point, Point(3, 4));
   });
 
-  test('Future Tap extension calls the function with the object and returns it', () async {
+  test('Future Tap extension calls the function with the object and returns it',
+      () async {
     Future<int> number = Future.value(5);
     int result = await number.tap((n) {
       expect(n, 5);
@@ -53,7 +55,7 @@ void main() {
       expect(p, isA<Point>());
       point = Future.value(Point(3, 4));
     });
-    expect(await point,  Point(3, 4));
+    expect(await point, Point(3, 4));
   });
 }
 
@@ -66,7 +68,10 @@ class Point {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Point && runtimeType == other.runtimeType && x == other.x && y == other.y;
+      other is Point &&
+          runtimeType == other.runtimeType &&
+          x == other.x &&
+          y == other.y;
 
   @override
   int get hashCode => x.hashCode ^ y.hashCode;

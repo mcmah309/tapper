@@ -13,4 +13,3 @@ extension FuturePipe<T> on Future<T> {
     return then(fn);
   }
 }
-

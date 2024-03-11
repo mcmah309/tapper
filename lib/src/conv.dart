@@ -111,6 +111,13 @@ extension Conv<T extends Object> on T {
   }
 }
 
+extension FutureConv<T extends Object> on Future<T> {
+  /// Attempts to convert this into [Future<U>].
+  Future<Result<U, ConvException>> tryConv<U extends Object>() async {
+    return then((value) => value.tryConv<U>());
+  }
+}
+
 U? _tryConvFromIterableHelper<U extends Object>(Iterable<Object?> from) {
   final inner = from.singleOrNull;
   if (inner == null) {

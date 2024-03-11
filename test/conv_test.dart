@@ -1,3 +1,4 @@
+import 'package:rust_core/result.dart';
 import 'package:tapper/src/conv.dart';
 import 'package:test/test.dart';
 
@@ -90,6 +91,16 @@ void main() {
       ];
       expect(nested.tryConv<int>().unwrap(), 1);
       expect(nested.tryConv<String>().unwrap(), "1");
+    });
+
+    test('Future conversion to various types', () async {
+      Future<int> number = Future.value(5);
+      expect(await number.tryConv<int>().unwrap(), 5);
+      expect(await number.tryConv<double>().unwrap(), 5.0);
+      expect(await number.tryConv<num>().unwrap(), 5);
+      expect(await number.tryConv<bool>().unwrap(), isTrue);
+      expect(await number.tryConv<String>().unwrap(), '5');
+      expect(await number.tryConv<BigInt>().unwrap(), BigInt.from(5));
     });
   });
 

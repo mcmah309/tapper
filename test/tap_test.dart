@@ -22,7 +22,7 @@ void main() {
     });
     expect(tappedPoint, point);
 
-    tappedPoint = await point.tapFuture((p) async {
+    tappedPoint = await Future.value(point).tap((p) async {
       await Future.delayed(Duration(milliseconds: 100));
       expect(p, point);
       point = Point(3, 4);

@@ -15,11 +15,3 @@ extension FutureTap<T> on Future<T> {
     return this;
   }
 }
-
-extension TapFuture<T> on T {
-  /// Introspects the current value with the provided function
-  Future<T> tapFuture(Future<void> Function(T) fn) async {
-    await fn(this);
-    return this;
-  }
-}

@@ -1,3 +1,7 @@
+# 0.1.8
+
+- Update rust_core
+
 # 0.1.7
 
 - Try Conv for Iterable

@@ -1,3 +1,7 @@
+# 0.1.9
+
+- Add Future extensions
+
 # 0.1.8
 
 - Update rust_core

@@ -1,3 +1,7 @@
+# 0.1.10
+
+- TapFuture
+
 # 0.1.9
 
 - Add Future extensions

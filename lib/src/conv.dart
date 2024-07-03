@@ -309,7 +309,8 @@ class TryConvError implements Exception {
   }
 
   @override
-  bool operator ==(Object other) => other is TryConvError && other.from == from && other.to == to;
+  bool operator ==(Object other) =>
+      other is TryConvError && other.from == from && other.to == to;
 
   @override
   int get hashCode => from.hashCode ^ to.hashCode;

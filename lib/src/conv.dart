@@ -2,7 +2,7 @@ import 'package:rust_core/result.dart';
 
 extension Conv<T extends Object> on T {
   /// Attempts to convert this into [U].
-  Result<U, ConvException> tryConv<U extends Object>() {
+  Result<U, TryConvError> tryConv<U extends Object>() {
     T from = this;
     U? to;
     switch (from) {
@@ -105,7 +105,7 @@ extension Conv<T extends Object> on T {
         break;
     }
     if (to == null) {
-      return Err(ConvException(T, U));
+      return Err(TryConvError(T, U));
     }
     return Ok(to);
   }
@@ -113,7 +113,7 @@ extension Conv<T extends Object> on T {
 
 extension FutureConv<T extends Object> on Future<T> {
   /// Attempts to convert this into [Future<U>].
-  Future<Result<U, ConvException>> tryConv<U extends Object>() async {
+  Future<Result<U, TryConvError>> tryConv<U extends Object>() async {
     return then((value) => value.tryConv<U>());
   }
 }
@@ -297,14 +297,20 @@ extension ConvString on String {
 //************************************************************************//
 
 /// Exception from a failed conversion
-class ConvException implements Exception {
+class TryConvError implements Exception {
   final Type from;
   final Type to;
 
-  ConvException(this.from, this.to);
+  TryConvError(this.from, this.to);
 
   @override
   String toString() {
     return "ConversionException: Failed to convert from type '$from' to '$to'.";
   }
+
+  @override
+  bool operator ==(Object other) => other is TryConvError && other.from == from && other.to == to;
+
+  @override
+  int get hashCode => from.hashCode ^ to.hashCode;
 }

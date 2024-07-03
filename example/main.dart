@@ -19,7 +19,7 @@ void main() {
   // number is now 123
 
   Object nonNumericString = "abc";
-  Result<int, ConvException> numberResult = nonNumericString.tryConv<int>();
+  Result<int, TryConvError> numberResult = nonNumericString.tryConv<int>();
   // conversion is not possible and handled with Result
 
   List<Set<List<int>>> nestedInt = [
@@ -27,6 +27,6 @@ void main() {
       [1]
     }
   ];
-  Result<String, ConvException> stringResult = nestedInt.tryConv<String>();
+  Result<String, TryConvError> stringResult = nestedInt.tryConv<String>();
   // result is Ok("1")
 }

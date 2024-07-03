@@ -1,3 +1,8 @@
+# 1.0.0
+
+- stabilize
+- update to rust_core 1.0.0
+
 # 0.1.10
 
 - TapFuture

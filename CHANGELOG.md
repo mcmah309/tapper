@@ -1,3 +1,7 @@
+# 1.1.1
+
+- Add zip 4 and 5 extensions
+
 # 1.1.0
 
 - Add zip extensions

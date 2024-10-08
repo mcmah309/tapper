@@ -5,8 +5,11 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://github.com/mcmah309/tapper/actions/workflows/dart.yml/badge.svg)](https://github.com/mcmah309/tapper/actions)
 
-Provides extension methods on all types to allow temporary, inspection/mutation (tap),
-transformation (pipe), and safe type conversion without casting (conv).
+Provides extension methods on all types to allow 
+ - inspection/mutation (tap),
+ - transformation (pipe)
+ - null chaining deconstruction (zip)
+ - safe type conversion without casting (conv).
 
 Based on the Rust crate with a similar name [tap].
 
@@ -37,6 +40,38 @@ number = number
             return n;
           });
 // Prints: The number is 11
+```
+
+## Zip
+`zip` is an extension method for values and records that pulls any inner nullable values into the outer
+scope. This can be combined with the `?` operator for more concise statements.
+
+```dart
+String? getName() => ...;
+String? getPreferences() => ...;
+
+if (getName()?
+      .pipe((e) => e.zip(getPreferences()))?
+      .pipe((e) => e.zip(getDetails()))
+      case (String name, String preferences, String details)) {
+  print("Hello $name, your preferences are $preferences and details are $details");
+} else {
+  return;
+}
+// vs
+String? name = getName();
+if (name == null) {
+  return;
+}
+String? preferences = getPreferences();
+if (preferences == null) {
+  return;
+}
+String? details = getDetails();
+if (details == null) {
+  return;
+}
+print("Hello $name, your preferences are $preferences and details are $details");
 ```
 
 ## Conv

@@ -14,9 +14,12 @@ void main() {
   });
   // Prints: The number is 11
 
-  if (getName()?.pipe((e) => e.zip(getPreferences()))?.pipe((e) => e.zip(getDetails()))
+  if (getName()
+          ?.pipe((e) => e.zip(getPreferences()))
+          ?.pipe((e) => e.zip(getDetails()))
       case (String name, String preferences, String details)) {
-    print("Hello $name, your preferences are $preferences and details are $details");
+    print(
+        "Hello $name, your preferences are $preferences and details are $details");
   } else {
     return;
   }
@@ -33,8 +36,8 @@ void main() {
   if (details == null) {
     return;
   }
-  print("Hello $name, your preferences are $preferences and details are $details");
-  
+  print(
+      "Hello $name, your preferences are $preferences and details are $details");
 
   String numericString = "123";
   number = numericString.convInt(); // convInt exists for this type

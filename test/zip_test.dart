@@ -52,17 +52,16 @@ void main() {
     expect(x, null);
 
     x = (provided(), provided()).zip(provided());
-    expect(x, (1,1,1));
+    expect(x, (1, 1, 1));
     x = (provided(), missing()).zip(provided());
     expect(x, null);
     x = (missing(), provided()).zip(provided());
     expect(x, null);
     x = (missing(), missing()).zip(provided());
     expect(x, null);
-
   });
 
-  test('zip3', (){
+  test('zip3', () {
     (int, int, int, int)? x;
 
     x = (provided(), provided(), provided()).zip(missing());
@@ -83,7 +82,7 @@ void main() {
     expect(x, null);
 
     x = (provided(), provided(), provided()).zip(provided());
-    expect(x, (1,1,1,1));
+    expect(x, (1, 1, 1, 1));
     x = (provided(), provided(), missing()).zip(provided());
     expect(x, null);
     x = (provided(), missing(), provided()).zip(provided());

@@ -64,7 +64,8 @@ extension ZipExtension2D<A extends Object, B extends Object> on (A?, B?) {
 
 //************************************************************************//
 
-extension ZipExtension3A<A extends Object, B extends Object, C extends Object> on (A, B, C) {
+extension ZipExtension3A<A extends Object, B extends Object, C extends Object>
+    on (A, B, C) {
   @pragma("vm:prefer-inline")
   (A, B, C, Z)? zip<Z extends Object>(Z? other) {
     if (other == null) return null;
@@ -72,7 +73,8 @@ extension ZipExtension3A<A extends Object, B extends Object, C extends Object> o
   }
 }
 
-extension ZipExtension3B<A extends Object, B extends Object, C extends Object> on (A?, B, C) {
+extension ZipExtension3B<A extends Object, B extends Object, C extends Object>
+    on (A?, B, C) {
   @pragma("vm:prefer-inline")
   (A, B, C, Z)? zip<Z extends Object>(Z? other) {
     if (this.$1 == null) return null;
@@ -81,7 +83,8 @@ extension ZipExtension3B<A extends Object, B extends Object, C extends Object> o
   }
 }
 
-extension ZipExtension3C<A extends Object, B extends Object, C extends Object> on (A, B?, C) {
+extension ZipExtension3C<A extends Object, B extends Object, C extends Object>
+    on (A, B?, C) {
   @pragma("vm:prefer-inline")
   (A, B, C, Z)? zip<Z extends Object>(Z? other) {
     if (this.$2 == null) return null;
@@ -90,7 +93,8 @@ extension ZipExtension3C<A extends Object, B extends Object, C extends Object> o
   }
 }
 
-extension ZipExtension3D<A extends Object, B extends Object, C extends Object> on (A, B, C?) {
+extension ZipExtension3D<A extends Object, B extends Object, C extends Object>
+    on (A, B, C?) {
   @pragma("vm:prefer-inline")
   (A, B, C, Z)? zip<Z extends Object>(Z? other) {
     if (this.$3 == null) return null;
@@ -99,7 +103,8 @@ extension ZipExtension3D<A extends Object, B extends Object, C extends Object> o
   }
 }
 
-extension ZipExtension3E<A extends Object, B extends Object, C extends Object> on (A?, B?, C) {
+extension ZipExtension3E<A extends Object, B extends Object, C extends Object>
+    on (A?, B?, C) {
   @pragma("vm:prefer-inline")
   (A, B, C, Z)? zip<Z extends Object>(Z? other) {
     if (this.$1 == null) return null;
@@ -109,7 +114,8 @@ extension ZipExtension3E<A extends Object, B extends Object, C extends Object> o
   }
 }
 
-extension ZipExtension3F<A extends Object, B extends Object, C extends Object> on (A?, B, C?) {
+extension ZipExtension3F<A extends Object, B extends Object, C extends Object>
+    on (A?, B, C?) {
   @pragma("vm:prefer-inline")
   (A, B, C, Z)? zip<Z extends Object>(Z? other) {
     if (this.$1 == null) return null;
@@ -119,7 +125,8 @@ extension ZipExtension3F<A extends Object, B extends Object, C extends Object> o
   }
 }
 
-extension ZipExtension3G<A extends Object, B extends Object, C extends Object> on (A, B?, C?) {
+extension ZipExtension3G<A extends Object, B extends Object, C extends Object>
+    on (A, B?, C?) {
   @pragma("vm:prefer-inline")
   (A, B, C, Z)? zip<Z extends Object>(Z? other) {
     if (this.$2 == null) return null;
@@ -129,7 +136,8 @@ extension ZipExtension3G<A extends Object, B extends Object, C extends Object> o
   }
 }
 
-extension ZipExtension3H<A extends Object, B extends Object, C extends Object> on (A?, B?, C?) {
+extension ZipExtension3H<A extends Object, B extends Object, C extends Object>
+    on (A?, B?, C?) {
   @pragma("vm:prefer-inline")
   (A, B, C, Z)? zip<Z extends Object>(Z? other) {
     if (this.$1 == null) return null;

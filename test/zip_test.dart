@@ -50,4 +50,25 @@ void main() {
     x = (provided(), provided(), provided()).zip(provided());
     expect(x, (1, 1, 1, 1));
   });
+
+  test('zip4', () {
+    (int, int, int, int, int)? x;
+
+    x = (provided(), provided(), provided(), provided()).zip(missing());
+    expect(x, null);
+
+    x = (provided(), provided(), provided(), provided()).zip(provided());
+    expect(x, (1, 1, 1, 1, 1));
+  });
+
+  test('zip5', () {
+    (int, int, int, int, int, int)? x;
+
+    x = (provided(), provided(), provided(), provided(), provided()).zip(missing());
+    expect(x, null);
+
+    x = (provided(), provided(), provided(), provided(), provided()).zip(provided());
+    expect(x, (1, 1, 1, 1, 1, 1));
+  });
+
 }

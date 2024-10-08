@@ -64,11 +64,12 @@ void main() {
   test('zip5', () {
     (int, int, int, int, int, int)? x;
 
-    x = (provided(), provided(), provided(), provided(), provided()).zip(missing());
+    x = (provided(), provided(), provided(), provided(), provided())
+        .zip(missing());
     expect(x, null);
 
-    x = (provided(), provided(), provided(), provided(), provided()).zip(provided());
+    x = (provided(), provided(), provided(), provided(), provided())
+        .zip(provided());
     expect(x, (1, 1, 1, 1, 1, 1));
   });
-
 }

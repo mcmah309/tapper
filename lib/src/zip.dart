@@ -15,7 +15,6 @@ extension Zip1Extension<A extends Object> on (A,) {
   }
 }
 
-
 extension Zip2Extension<A extends Object, B extends Object> on (A, B) {
   @pragma("vm:prefer-inline")
   (A, B, Z)? zip<Z extends Object>(Z? other) {
@@ -23,7 +22,6 @@ extension Zip2Extension<A extends Object, B extends Object> on (A, B) {
     return (this.$1, this.$2, other);
   }
 }
-
 
 extension Zip3Extension<A extends Object, B extends Object, C extends Object>
     on (A, B, C) {

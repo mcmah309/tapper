@@ -47,6 +47,7 @@ scope. This can be combined with the `?` operator for more concise statements.
 ```dart
 String? getName() => ...;
 String? getPreferences() => ...;
+String? getDetails() => ...;
 
 if (getName()?
       .pipe((e) => e.zip(getPreferences()))?

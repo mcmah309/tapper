@@ -11,8 +11,6 @@ Provides extension methods on all types to allow
  - null chaining deconstruction (zip)
  - safe type conversion without casting (conv).
 
-Based on the Rust crate with a similar name [tap].
-
 ## Tap
 
 The `Tap` extension allows you to perform an operation on an object and then return the original object. It's useful for

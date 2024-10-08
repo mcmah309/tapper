@@ -1,3 +1,7 @@
+# 1.1.0
+
+- Add zip extensions
+
 # 1.0.0
 
 - stabilize

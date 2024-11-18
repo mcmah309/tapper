@@ -1,4 +1,4 @@
-import 'package:rust_core/result.dart';
+import 'package:rust/rust.dart';
 import 'package:tapper/src/conv.dart';
 import 'package:test/test.dart';
 

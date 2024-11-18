@@ -1,6 +1,6 @@
 // ignore_for_file: unused_local_variable
 
-import 'package:rust_core/result.dart';
+import 'package:rust/rust.dart';
 import 'package:tapper/tapper.dart';
 
 void main() {

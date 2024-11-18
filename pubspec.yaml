@@ -1,7 +1,7 @@
 name: tapper
 description: Provides extension methods on all types to allow inspection/mutation (tap),
   transformation (pipe), null chaining (zip), and converting (conv)
-version: 1.1.1
+version: 1.1.2
 repository: https://github.com/mcmah309/tapper
 
 environment:
@@ -9,7 +9,7 @@ environment:
 
 # Add regular dependencies here.
 dependencies:
-  rust_core: ^1.0.0
+  rust: ^1.0.0
 
 dev_dependencies:
   lints: ^2.1.0

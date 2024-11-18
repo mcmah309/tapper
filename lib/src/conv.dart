@@ -1,4 +1,4 @@
-import 'package:rust_core/result.dart';
+import 'package:rust/rust.dart';
 
 extension Conv<T extends Object> on T {
   /// Attempts to convert this into [U].

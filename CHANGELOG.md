@@ -1,3 +1,7 @@
+# 1.2.0
+
+- Upgrade rust
+
 # 1.1.2
 
 - Switch to rust

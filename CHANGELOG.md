@@ -1,3 +1,7 @@
+# 1.3.0
+
+- Add `zipFn`
+
 # 1.2.0
 
 - Upgrade rust

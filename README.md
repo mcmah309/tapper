@@ -41,7 +41,7 @@ number = number
 ```
 
 ## Zip
-`zip` is an extension method for values and records that pulls any inner nullable values into the outer
+`zip`/`zipFn` is an extension method for values and records that pulls any inner nullable values into the outer
 scope. This can be combined with the `?` operator for more concise statements.
 
 ```dart
@@ -49,8 +49,7 @@ String? getName() => ...;
 String? getPreferences() => ...;
 String? getDetails() => ...;
 
-if (getName()?.pipe((e) => e.zip(getPreferences()))?.pipe((e) => e.zip(getDetails()))
-      case (String name, String preferences, String details)) {
+if (getName()?.zipFn(getPreferences)?.zipFn(getDetails) case (String name, String preferences, String details)) {
   print("Hello $name, your preferences are $preferences and details are $details");
 } else {
   return;

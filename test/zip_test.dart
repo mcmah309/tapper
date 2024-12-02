@@ -64,12 +64,34 @@ void main() {
   test('zip5', () {
     (int, int, int, int, int, int)? x;
 
-    x = (provided(), provided(), provided(), provided(), provided())
-        .zip(missing());
+    x = (provided(), provided(), provided(), provided(), provided()).zip(missing());
     expect(x, null);
 
-    x = (provided(), provided(), provided(), provided(), provided())
-        .zip(provided());
+    x = (provided(), provided(), provided(), provided(), provided()).zip(provided());
     expect(x, (1, 1, 1, 1, 1, 1));
+  });
+
+  test('readme', () {
+    String? getName() => "name";
+    String? getPreferences() => "pref";
+    String? getDetails() => "details";
+
+    if (getName()?.zip(getPreferences())?.zip(getDetails())
+        case (String name, String preferences, String details)) {
+      expect(name, "name");
+      expect(preferences, "pref");
+      expect(details, "details");
+    } else {
+      throw Exception();
+    }
+
+    if (getName()?.zipFn(getPreferences)?.zipFn(getDetails)
+        case (String name, String preferences, String details)) {
+      expect(name, "name");
+      expect(preferences, "pref");
+      expect(details, "details");
+    } else {
+      throw Exception();
+    }
   });
 }

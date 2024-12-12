@@ -14,31 +14,6 @@ void main() {
   });
   // Prints: The number is 11
 
-  if (getName()
-          ?.pipe((e) => e.zip(getPreferences()))
-          ?.pipe((e) => e.zip(getDetails()))
-      case (String name, String preferences, String details)) {
-    print(
-        "Hello $name, your preferences are $preferences and details are $details");
-  } else {
-    return;
-  }
-  // vs
-  String? name = getName();
-  if (name == null) {
-    return;
-  }
-  String? preferences = getPreferences();
-  if (preferences == null) {
-    return;
-  }
-  String? details = getDetails();
-  if (details == null) {
-    return;
-  }
-  print(
-      "Hello $name, your preferences are $preferences and details are $details");
-
   String numericString = "123";
   number = numericString.convInt(); // convInt exists for this type
   // number is now 123
@@ -55,7 +30,3 @@ void main() {
   Result<String, TryConvError> stringResult = nestedInt.tryConv<String>();
   // result is Ok("1")
 }
-
-String? getName() => "John";
-String? getPreferences() => "Preferences";
-String? getDetails() => "Details";

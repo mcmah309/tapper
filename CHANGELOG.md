@@ -1,3 +1,7 @@
+# 2.0.0
+
+- Remove zip
+
 # 1.3.0
 
 - Add `zipFn`

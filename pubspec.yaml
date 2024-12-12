@@ -1,6 +1,6 @@
 name: tapper
 description: Provides extension methods on all types to allow inspection/mutation (tap),
-  transformation (pipe), null chaining (zip), and converting (conv)
+  transformation (pipe), and converting (conv)
 version: 1.3.0
 repository: https://github.com/mcmah309/tapper
 

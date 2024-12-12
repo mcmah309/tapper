@@ -1,6 +1,7 @@
 # 2.0.0
 
 - Remove zip
+- Update rust
 
 # 1.3.0
 
